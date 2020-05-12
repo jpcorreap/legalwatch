@@ -25,13 +25,12 @@ function App() {
       )}
       <br />
       <br />
-      <div className="container">
-        {user ? (
-          <Pasos autenticado={true} username={user.username} />
-        ) : (
-          <Pasos autenticado={false} />
-        )}
-      </div>
+
+      {user ? (
+        <Pasos autenticado={true} username={user.username} />
+      ) : (
+        <Pasos autenticado={false} />
+      )}
     </div>
   );
 }

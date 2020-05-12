@@ -19,3 +19,8 @@
 #imagenAHH {
   background-color: gray;
 }
+
+#navbar {
+  background-color: "#0F401B";
+  color: "#CCCCCC" !important;
+}

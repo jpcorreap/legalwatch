@@ -1,14 +1,14 @@
 import React from "react";
-import bandera from "../Bandera Colombia.png";
-import { Link, Route, Switch } from "react-router-dom";
-import Login from "./Login.js";
-import Register from "./Register.js";
+import { Link } from "react-router-dom";
+import logo from "../Logo.png";
 
 function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav
+      className="navbar navbar-expand-lg navbar-light"
+      style={{ backgroundColor: "#0F401B", color: "#CCCCCC" }}>
       <a className="navbar-brand" href="/">
-        <img src={bandera} alt="logo" width="50px" />
+        <img src={logo} alt="logo" width="40px" />
       </a>
       <button
         className="navbar-toggler"
@@ -49,25 +49,21 @@ function Navbar(props) {
             id="navbarSupportedContent">
             <ul className="navbar-nav">
               <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <strong>{props.username}</strong>
+                <a
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+                  <strong>{props.username}</strong>
+                </a>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a className="dropdown-item" href="/logout">
+                    Cerrar sesión
                   </a>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdown"
-                  >
-                    <a className="dropdown-item" href="/logout">
-                      Cerrar sesión
-                    </a>
-                  </div>
-                </li>
+                </div>
+              </li>
               <li className="nav-item">
                 <Link to={"/solicitudes"} className="nav-link">
                   <strong>Solicitudes</strong>
