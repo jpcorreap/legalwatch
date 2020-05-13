@@ -12,7 +12,7 @@ function PasoTitle(props) {
           </div>
           <div className="col-3 text-right">
             <Link to={"/paso2"}>
-              <button className="btn btn-primary">Siguiente</button>
+              <button className="btn btn-success">Siguiente</button>
             </Link>
           </div>
         </div>
@@ -30,15 +30,13 @@ function PasoTitle(props) {
         <div className="row text-center">
           <div className="col-3 text-left">
             <Link to={"/paso" + (props.actual - 1)}>
-              <button className="btn btn-primary">Anterior</button>
+              <button className="btn btn-success">Anterior</button>
             </Link>
           </div>
           <div className="col">
             <span className="tituloPaso">Paso {props.actual} de 6</span>
           </div>
-          <div className="col-3 text-right">
-            <button className="btn btn-primary">Enviar solicitud (?)</button>
-          </div>
+          <div className="col-3 text-right"></div>
         </div>
         <br />
         <div className="row">
@@ -54,7 +52,7 @@ function PasoTitle(props) {
         <div className="row text-center">
           <div className="col-3 text-left">
             <Link to={"/paso" + (props.actual - 1)}>
-              <button className="btn btn-primary">Anterior</button>
+              <button className="btn btn-success">Anterior</button>
             </Link>
           </div>
           <div className="col">
@@ -62,7 +60,7 @@ function PasoTitle(props) {
           </div>
           <div className="col-3 text-right">
             <Link to={"/paso" + (props.actual + 1)}>
-              <button className="btn btn-primary">Siguiente</button>
+              <button className="btn btn-success">Siguiente</button>
             </Link>
           </div>
         </div>

@@ -20,6 +20,8 @@ import quiobo from "../quiobo.png";
 import banner5 from "../banner5.PNG";
 import banner6 from "../banner6.PNG";
 import banner7 from "../banner7.PNG";
+import mas from "../mas.PNG";
+import solo from "../solo.PNG";
 
 function Pasos(props) {
   return (
@@ -46,7 +48,7 @@ function Pasos(props) {
                   <img src={quiobo} width="100%" alt=" " />
                 </div>
                 <div className="col-12">
-                  <Link to={"/antesdecomenzar"}>
+                  <Link to={"/elijaplan"}>
                     <button
                       className="btn btn-success"
                       style={{ fontSize: "25px" }}>
@@ -129,6 +131,100 @@ function Pasos(props) {
           </div>
         </Route>
 
+        <Route exact path="/elijaplan">
+          <div className="container">
+            <div className="caja text-center">
+              <h2 className="text-success">
+                <strong>Elige un plan</strong>
+              </h2>
+
+              <p className="tituloFo" style={{ fontSize: "20px" }}>
+                Legal Watch tiene dos planes de servicios para ti:{" "}
+                <strong>PREMIUM</strong> y <strong>FREE</strong>.
+              </p>
+            </div>
+            <br />
+            <br />
+            <div className="caja2">
+              <div className="row">
+                <div className="col">
+                  <img
+                    src={mas}
+                    className="img-responsive"
+                    alt="Responsive"
+                    width="100%"
+                  />
+                </div>
+                <div className="col">
+                  <p className="titulo">
+                    <strong>PREMIUM</strong>
+                  </p>
+                  <br />
+                  <div className="text-justify">
+                    <p className="letra">
+                      {" "}
+                      Con el plan premium nosotros hacemos todo el proceso por
+                      ti. El plan incluye:
+                    </p>
+                    <ul
+                      className="letra"
+                      style={{ fontSize: "20px !important" }}>
+                      <li>Reuniones presenciales.</li>
+                      <li>Grupo de expertos y abogados a tu disposición.</li>
+                      <li>Realización de trámites y papeleo.</li>
+                      <li>Seguimiento del proceso.</li>
+                      <li>Búsqueda en bases de datos</li>
+                      <li>
+                        Recordatorio de pago sobre la tasa de anualidad cada
+                        año.
+                      </li>
+                    </ul>
+                  </div>
+                  <Link to={"/premium"}>
+                    <button
+                      className="btn btn-success"
+                      style={{ fontSize: "25px" }}>
+                      Quiero Premium
+                    </button>
+                  </Link>
+                </div>
+              </div>
+              <br />
+              <br />
+              <br />
+              <div className="row">
+                <div className="col">
+                  <p className="titulo">FREE</p>
+                  <p className="letra text-justify">
+                    {" "}
+                    Con el plan free puedes navegar, conocer y seguir cada uno
+                    de los pasos necesarios para conseguir una patente. De
+                    manera fácil e intuitiva te brindamos toda la información
+                    necesaria para que tu idea se de a conocer.
+                  </p>
+
+                  <Link to={"/paso1"}>
+                    <button
+                      className="btn btn-success"
+                      style={{ fontSize: "25px" }}>
+                      Quiero Free
+                    </button>
+                  </Link>
+                </div>
+                <div className="col">
+                  <img
+                    src={solo}
+                    className="img-responsive"
+                    alt="Responsive"
+                    width="400"
+                    height="400"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Route>
+
         <Route exact path="/antesdecomenzar">
           <Home />
         </Route>
@@ -146,53 +242,73 @@ function Pasos(props) {
         </Route>
 
         <Route exact path="/paso1">
-          <ProgressBar avance={1} />
-          <Paso1 />
+          <div className="container">
+            <ProgressBar avance={1} />
+            <Paso1 />
+          </div>
         </Route>
 
         <Route exact path="/paso2">
-          <ProgressBar avance={2} />
-          <Paso2 />
+          <div className="container">
+            <ProgressBar avance={2} />
+            <Paso2 />
+          </div>
         </Route>
 
         <Route exact path="/paso3">
-          <ProgressBar avance={3} />
-          <Paso3 />
+          <div className="container">
+            <ProgressBar avance={3} />
+            <Paso3 />
+          </div>
         </Route>
 
         <Route exact path="/paso3_scope">
-          <ProgressBar avance={3} />
-          <Paso3_PatentScope />
+          <div className="container">
+            <ProgressBar avance={3} />
+            <Paso3_PatentScope />
+          </div>
         </Route>
 
         <Route exact path="/paso3_googleutility">
-          <ProgressBar avance={3} />
-          <Paso3_GoogleUPatents />
+          <div className="container">
+            <ProgressBar avance={3} />
+            <Paso3_GoogleUPatents />
+          </div>
         </Route>
 
         <Route exact path="/paso3_googleissued">
-          <ProgressBar avance={3} />
-          <Paso3_GoogleIPatents />
+          <div className="container">
+            <ProgressBar avance={3} />
+            <Paso3_GoogleIPatents />
+          </div>
         </Route>
 
         <Route exact path="/paso3_nasa">
-          <ProgressBar avance={3} />
-          <Paso3_NasaPatents />
+          <div className="container">
+            <ProgressBar avance={3} />
+            <Paso3_NasaPatents />
+          </div>
         </Route>
 
         <Route exact path="/paso4">
-          <ProgressBar avance={4} />
-          <Paso4 />
+          <div className="container">
+            <ProgressBar avance={4} />
+            <Paso4 />
+          </div>
         </Route>
 
         <Route exact path="/paso5">
-          <ProgressBar avance={5} />
-          <Paso5 />
+          <div className="container">
+            <ProgressBar avance={5} />
+            <Paso5 />
+          </div>
         </Route>
 
         <Route exact path="/paso6">
-          <ProgressBar avance={6} />
-          {props.username ? <Paso6 username={props.username} /> : <Paso6 />}
+          <div className="container">
+            <ProgressBar avance={6} />
+            {props.username ? <Paso6 username={props.username} /> : <Paso6 />}
+          </div>
         </Route>
       </Switch>
     </div>

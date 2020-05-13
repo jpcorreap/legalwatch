@@ -11,8 +11,8 @@ function Paso4() {
         alt="Microsoft Word Icon"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Microsoft_Word_2013_logo.svg/1200px-Microsoft_Word_2013_logo.svg.png"
         width="150px"></img>
-      <br />
       <p>
+        <br />
         Descargue el formulario de la SIC haciendo clic{" "}
         <a href="https://legalwatch-ce193.firebaseapp.com/assets/fotos/descargar.docx">
           aquí
