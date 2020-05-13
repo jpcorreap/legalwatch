@@ -20,6 +20,7 @@ import quiobo from "../quiobo.png";
 import banner5 from "../banner5.PNG";
 import banner6 from "../banner6.PNG";
 import banner7 from "../banner7.PNG";
+import pago2 from "../pago2.PNG";
 import mas from "../mas.PNG";
 import solo from "../solo.PNG";
 
@@ -134,7 +135,7 @@ function Pasos(props) {
         <Route exact path="/elijaplan">
           <div className="container">
             <div className="caja text-center">
-              <h2 className="text-success">
+              <h2 className="text-success" style={{ fontSize: "60px" }}>
                 <strong>Elige un plan</strong>
               </h2>
 
@@ -182,7 +183,7 @@ function Pasos(props) {
                   </div>
                   <Link to={"/premium"}>
                     <button
-                      className="btn btn-success"
+                      className="btn btn-success text-center"
                       style={{ fontSize: "25px" }}>
                       Quiero Premium
                     </button>
@@ -227,6 +228,80 @@ function Pasos(props) {
 
         <Route exact path="/antesdecomenzar">
           <Home />
+        </Route>
+
+        <Route exact path="/premium">
+          <div className="container">
+            <div className="row">
+              <div className="col-7">
+                <form>
+                  <div className="form-group">
+                    <label for="exampleInputEmail1">Correo electrónico:</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      placeholder="Ingresa correo"
+                    />
+                    <small id="emailHelp" className="form-text text-muted">
+                      No compartiremos tu correo con nadie más.
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <label for="exampleInputPassword1">Nombre:</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Ingrese nombre"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label for="exampleInputPassword1">Apellidos:</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Ingrese apellidos"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label for="exampleInputPassword1">
+                      Número telefónico:
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Ingresa número de teléfono"
+                    />
+                  </div>
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="exampleCheck1"
+                    />
+                    <label className="form-check-label" for="exampleCheck1">
+                      Autorizo recibir promociones.
+                    </label>
+                  </div>
+                  <br />
+                  <button type="submit" className="btn btn-success">
+                    Submit
+                  </button>
+                </form>
+              </div>
+              <div className="col">
+                <img
+                  src={pago2}
+                  className="img-responsive"
+                  alt=" "
+                  width="100%"></img>
+              </div>
+            </div>
+          </div>
         </Route>
 
         <Route exact path="/login">

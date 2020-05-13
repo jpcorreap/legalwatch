@@ -6,6 +6,22 @@
   margin-top: 30px;
 }
 
+#imagenAHH {
+  background-color: gray;
+}
+
+#navbar {
+  background-color: #0f401b;
+}
+
+.linkNavbar {
+  color: #cccccc;
+}
+
+.linkNavbar:hover {
+  color: white;
+}
+
 .tituloPaso {
   background-color: #1f8b1b;
   font-size: x-large;
@@ -14,15 +30,6 @@
   padding-left: 10px;
   padding-right: 10px;
   color: white;
-}
-
-#imagenAHH {
-  background-color: gray;
-}
-
-#navbar {
-  background-color: #0f401b;
-  color: #cccccc !important;
 }
 
 .caja {

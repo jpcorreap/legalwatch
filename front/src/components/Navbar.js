@@ -4,7 +4,7 @@ import logo from "../Logo.png";
 
 function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light" id="navbar">
+    <nav className="navbar navbar-expand" id="navbar">
       <a className="navbar-brand" href="/">
         <img src={logo} alt="logo" width="40px" />
       </a>
@@ -29,13 +29,13 @@ function Navbar(props) {
               id="navbarSupportedContent">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link to={"/login"} className="nav-link">
-                    <strong>Ingresar</strong>
+                  <Link to={"/login"} className="nav-link linkNavbar">
+                    Ingresar
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={"/register"} className="nav-link">
-                    <strong>Registrarse</strong>
+                  <Link to={"/register"} className="nav-link linkNavbar">
+                    Registrarse
                   </Link>
                 </li>
               </ul>
