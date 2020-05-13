@@ -51,7 +51,7 @@ router.post("/postRespuesta", (req, res) => {
   blockspring.runParsed(
     "spanish-keyword-extractor-monkeylearn",
     { text: req.body.texto },
-    { api_key: "br_128366_62a16c09207913a40092bb9b843f3ac7f2677611" },
+    { api_key: "" },
     function (resAPI) {
       console.log("VA A ENVIAR LA RESPUESTA ", resAPI);
       res.json(resAPI.params.keywords);
