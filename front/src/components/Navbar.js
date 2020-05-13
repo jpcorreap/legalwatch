@@ -4,9 +4,7 @@ import logo from "../Logo.png";
 
 function Navbar(props) {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-light"
-      style={{ backgroundColor: "#0F401B", color: "#CCCCCC" }}>
+    <nav className="navbar navbar-expand-lg navbar-light" id="navbar">
       <a className="navbar-brand" href="/">
         <img src={logo} alt="logo" width="40px" />
       </a>
