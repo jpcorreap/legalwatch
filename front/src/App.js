@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.js";
 import Pasos from "./components/Pasos.js";
+import Footer from "./components/Footer.js";
 import "./App.css";
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
       ) : (
         <Pasos autenticado={false} />
       )}
+
+      <Footer />
     </div>
   );
 }

@@ -2,12 +2,35 @@
   font-weight: bolder;
 }
 
+#contenedorCorreo {
+  background-color: #cccccc;
+}
+
+#contenedorCorreo:hover {
+  background-color: #28a745;
+}
+
 .paso {
   margin-top: 30px;
 }
 
 #patentsviewLogo {
   background-color: #0f401b;
+}
+
+#contactenosFooter {
+  text-align: right !important;
+}
+
+.descripcion {
+  color: black;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+strongCriollo {
+  color: #28a745;
+  font-weight: bold;
 }
 
 #navbar {

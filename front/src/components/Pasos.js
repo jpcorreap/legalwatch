@@ -8,10 +8,6 @@ import Header from "./Header.js";
 import Paso1 from "./Paso1.js";
 import Paso2 from "./Paso2.js";
 import Paso3 from "./Paso3.js";
-import Paso3_PatentScope from "./Paso3_PatentScope.js";
-import Paso3_GoogleUPatents from "./Paso3_GoogleUPatents.js";
-import Paso3_GoogleIPatents from "./Paso3_GoogleIPatents.js";
-import Paso3_NasaPatents from "./Paso3_NasaPatents.js";
 import Paso4 from "./Paso4.js";
 import Paso5 from "./Paso5.js";
 import Paso6 from "./Paso6.js";
@@ -56,79 +52,89 @@ function Pasos(props) {
                       Comenzar
                     </button>
                   </Link>
-
-                  <div className="row" style={{ marginTop: "100px" }}>
-                    <div className="col-md-4">
-                      <div className="card h-700">
-                        <img
-                          className="card-img-top"
-                          src={banner7}
-                          alt=" "
-                          width="100%"
-                        />
-                        <div className="card-body text-center">
-                          <h5 className="card-title">
-                            Cifras de patentes en Colombia
-                          </h5>
-                          <a
-                            href="#"
-                            routerLink="/acerca"
-                            className="btn btn-success">
-                            <strong>¡Descubre más!</strong>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="col-md-4">
-                      <div className="card h-700">
-                        <img
-                          className="card-img-top"
-                          src={banner6}
-                          alt=" "
-                          width="100%"
-                        />
-                        <div className="card-body text-center">
-                          <h5 className="card-title">
-                            ¿Cómo podemos ayudarte?
-                          </h5>
-                          <a
-                            href="#"
-                            routerLink="/comenzar"
-                            className="btn btn-success">
-                            <strong>¡Descubre más!</strong>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <br />
-                    <br />
-                    <div className="col-md-4">
-                      <div className="card h-700">
-                        <img
-                          className="card-img-top"
-                          src={banner5}
-                          alt=" "
-                          width="100%"
-                        />
-                        <div className="card-body text-center">
-                          <h5 className="card-title">Estado de tu patente</h5>
-                          <a
-                            href="#"
-                            routerLink="/cinco"
-                            className="btn btn-success text-center">
-                            <strong>¡Descubre más!</strong>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
-            <br />
-            <br />
-            <br />
+
+            <div
+              className="row"
+              style={{
+                marginTop: "100px",
+                backgroundColor: "#6cb7a5",
+              }}>
+              <br />
+              <br />
+              <div className="container">
+                <div className="row" style={{ marginTop: "70px" }}>
+                  <div className="col-md-4">
+                    <div className="card h-700">
+                      <img
+                        className="card-img-top"
+                        src={banner7}
+                        alt=" "
+                        width="100%"
+                      />
+                      <div className="card-body text-center">
+                        <h5 className="card-title">
+                          Cifras de patentes en Colombia
+                        </h5>
+                        <a
+                          href="#"
+                          routerLink="/acerca"
+                          className="btn btn-success">
+                          <strong>¡Descubre más!</strong>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div className="card h-700">
+                      <img
+                        className="card-img-top"
+                        src={banner6}
+                        alt=" "
+                        width="100%"
+                      />
+                      <div className="card-body text-center">
+                        <h5 className="card-title">¿Cómo podemos ayudarte?</h5>
+                        <a
+                          href="#"
+                          routerLink="/comenzar"
+                          className="btn btn-success">
+                          <strong>¡Descubre más!</strong>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <br />
+                  <div className="col-md-4">
+                    <div className="card h-700">
+                      <img
+                        className="card-img-top"
+                        src={banner5}
+                        alt=" "
+                        width="100%"
+                      />
+                      <div className="card-body text-center">
+                        <h5 className="card-title">Estado de tu patente</h5>
+                        <a
+                          href="#"
+                          routerLink="/cinco"
+                          className="btn btn-success text-center">
+                          <strong>¡Descubre más!</strong>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    {" "}
+                    <br /> <br />{" "}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </Route>
 
@@ -334,34 +340,6 @@ function Pasos(props) {
           <div className="container">
             <ProgressBar avance={3} />
             <Paso3 />
-          </div>
-        </Route>
-
-        <Route exact path="/paso3_scope">
-          <div className="container">
-            <ProgressBar avance={3} />
-            <Paso3_PatentScope />
-          </div>
-        </Route>
-
-        <Route exact path="/paso3_googleutility">
-          <div className="container">
-            <ProgressBar avance={3} />
-            <Paso3_GoogleUPatents />
-          </div>
-        </Route>
-
-        <Route exact path="/paso3_googleissued">
-          <div className="container">
-            <ProgressBar avance={3} />
-            <Paso3_GoogleIPatents />
-          </div>
-        </Route>
-
-        <Route exact path="/paso3_nasa">
-          <div className="container">
-            <ProgressBar avance={3} />
-            <Paso3_NasaPatents />
           </div>
         </Route>
 

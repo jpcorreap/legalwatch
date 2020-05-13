@@ -10,8 +10,10 @@ function Paso2() {
       <div className="container">
         <div className="row">
           <div className="col-6 text-left">
-            <h3>No se patenta</h3>
-            <div className="text-justify">
+            <h3>
+              <strongCriollo>No</strongCriollo> se patentan
+            </h3>
+            <div className="text-justify descripcion">
               <ul>
                 <li>Ideas.</li>
                 <li>Descubirmientos.</li>
@@ -43,8 +45,10 @@ function Paso2() {
             </div>
           </div>
           <div className="col-6 text-right">
-            <h3>Sí se patenta</h3>
-            <div className="text-justify">
+            <h3>
+              <strongCriollo>Sí</strongCriollo> se patentan
+            </h3>
+            <div className="text-justify descripcion">
               <p>
                 Se protegen los inventos que consistan en productos,
                 procedimientos, métodos de fabricación, máquinas o aparatos que

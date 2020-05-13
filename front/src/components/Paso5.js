@@ -1,5 +1,6 @@
 import React from "react";
 import PasoTitle from "./PasoTitle.js";
+import pantallazoSIC from "../PantallazoSIC1.png";
 
 function Paso5() {
   return (
@@ -15,9 +16,7 @@ function Paso5() {
         .{" "}
       </p>
       <div className="img-container text-center">
-        <img
-          src="https://raw.githubusercontent.com/jpcorreap/patentCol/master/front/src/PantallazoSIPI.png"
-          width="60%"></img>
+        <img src={pantallazoSIC} width="60%"></img>
       </div>
       <br />
     </div>

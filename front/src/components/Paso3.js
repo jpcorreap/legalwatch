@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import PasoTitle from "./PasoTitle.js";
+import patentsViewLogo from "../PatentsView.png";
+import premium from "../BusquedaPremium.png";
 
 function Paso3() {
   const [patentsView, setPatentsView] = useState([]);
@@ -52,7 +53,7 @@ function Paso3() {
   useEffect(() => {
     async function fetchPatentsView() {
       const res = await fetch(
-        'https://www.patentsview.org/api/patents/query?q={"_gte":{"patent_date":"2010-01-01"}}&f=["patent_id","patent_title","patent_firstnamed_assignee_city","inventor_first_name","patent_firstnamed_inventor_country","patent_type","patent_abstract","patent_date"]'
+        'https://www.patentsview.org/api/patents/query?q={"_gte":{"patent_date":"2012-01-01"}}&f=["patent_id","patent_title","patent_firstnamed_assignee_city","inventor_first_name","patent_firstnamed_inventor_country","patent_type","patent_abstract","patent_date"]'
       );
       res
         .json()
@@ -71,42 +72,28 @@ function Paso3() {
     <div className="paso">
       <PasoTitle actual={3} nombre="Estado de la técnica" />
       <br />
-      <br />
-      <div className="row text-center">
-        <div className="col text-center">
-          <button className="btn btn-dark">PatentsView</button>
-        </div>
-        <div className="col text-center">
-          <Link to={"paso3_scope"}>
-            <button className="btn btn-info">PatentScope</button>
-          </Link>
-        </div>
-        <div className="col text-center">
-          <Link to={"paso3_googleutility"}>
-            <button className="btn btn-info">Google Utility Patents</button>
-          </Link>
-        </div>
-        <div className="col text-center">
-          <Link to={"paso3_googleissued"}>
-            <button className="btn btn-info">Google Issued Patents</button>
-          </Link>
-        </div>
-        <div className="col text-center">
-          <Link to={"paso3_nasa"}>
-            <button className="btn btn-info">NASA Patents</button>
-          </Link>
-        </div>
+      <div className="descripcion text-justify">
+        <p>
+          Antes de presentar la solicitud se sugiere realizar una{" "}
+          <strongCriollo>búsqueda del estado de la técnica</strongCriollo> en
+          bases de datos para localizar documentos de patentes y de esta manera
+          conocer si tu idea es una novedad en la invención. Por ahora estás en
+          una versión gratuita y debes hacer la búsqueda manualmente.
+        </p>
       </div>
-      <br />
-
+      <div className="img-container text-right" width="100%">
+        <img src={premium} alt=" "></img>
+        <br />
+        <br />
+        <br />
+      </div>
       <div>
         <div className="row">
           <div className="col-5">
             <img
               style={{ width: "100%" }}
               alt="PatentsView Logo"
-              id="patentsviewLogo"
-              src="https://www.patentsview.org/web/img/f34f24560eeb9097579c2be6fa29f5a7.logo_2x.png"></img>
+              src={patentsViewLogo}></img>
           </div>
           <div className="col-1"></div>
           <div className="col-5 text-right">
@@ -133,7 +120,7 @@ function Paso3() {
                 height: "70px",
               }}
               onClick={actualizarConsulta}
-              className="btn btn-info my-2 my-sm-0">
+              className="btn btn-success my-2 my-sm-0">
               <img
                 alt="Filter button"
                 src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/filter-512.png"
@@ -145,7 +132,7 @@ function Paso3() {
           <br />
           <div className="row justify-content-center">
             <div
-              className="spinner-border text-info"
+              className="spinner-border text-success"
               role="status"
               id="spinnerCarga">
               <span className="sr-only">
@@ -157,7 +144,7 @@ function Paso3() {
             {patentsView != null ? (
               patentsView.map((patent) => (
                 <div
-                  className="card border-info mb-3 col-md-12"
+                  className="card border-success mb-3 col-md-12"
                   key={patent.patent_id}>
                   <div className="card-header">
                     <h4>{patent.patent_title}</h4>
