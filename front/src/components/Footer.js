@@ -56,7 +56,14 @@ function Footer() {
 
       <div className="container">
         <p className="m-0 text-center text-white">
-          <a href="http://www.google.com">Créditos sitio web</a>
+          <a
+            onClick={() =>
+              alert(
+                "Código original tomado de https://github.com/jpcorreap/patentCol y posteriormente modificado."
+              )
+            }>
+            Créditos sitio web
+          </a>
         </p>
         <p className="m-0 text-center text-white">
           Copyright &copy; Legal Watch 2020
