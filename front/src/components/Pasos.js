@@ -3,6 +3,7 @@ import { Route, Switch, Link } from "react-router-dom";
 import Home from "./Home.js";
 import Login from "./Login.js";
 import Register from "./Register.js";
+import RegisterFree from "./RegisterFree.js";
 import ProgressBar from "./ProgressBar.js";
 import Header from "./Header.js";
 import Paso1 from "./Paso1.js";
@@ -45,13 +46,23 @@ function Pasos(props) {
                   <img src={quiobo} width="100%" alt=" " />
                 </div>
                 <div className="col-12">
-                  <Link to={"/elijaplan"}>
-                    <button
-                      className="btn btn-success"
-                      style={{ fontSize: "25px" }}>
-                      Comenzar
-                    </button>
-                  </Link>
+                  {!props.autenticado ? (
+                    <Link to={"/elijaplan"}>
+                      <button
+                        className="btn btn-success"
+                        style={{ fontSize: "25px" }}>
+                        Comenzar
+                      </button>
+                    </Link>
+                  ) : (
+                    <Link to={"/paso1"}>
+                      <button
+                        className="btn btn-success"
+                        style={{ fontSize: "25px" }}>
+                        Comenzar
+                      </button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -140,11 +151,11 @@ function Pasos(props) {
 
         <Route exact path="/elijaplan">
           <div className="container">
-            <div className="caja text-center">
+            <div className="text-center">
               <h2 className="text-success" style={{ fontSize: "60px" }}>
                 <strong>Elige un plan</strong>
               </h2>
-
+              <br />
               <p className="tituloFo" style={{ fontSize: "20px" }}>
                 Legal Watch tiene dos planes de servicios para ti:{" "}
                 <strong>PREMIUM</strong> y <strong>FREE</strong>.
@@ -180,14 +191,14 @@ function Pasos(props) {
                       <li>Grupo de expertos y abogados a tu disposición.</li>
                       <li>Realización de trámites y papeleo.</li>
                       <li>Seguimiento del proceso.</li>
-                      <li>Búsqueda en bases de datos</li>
+                      <li>Búsqueda automatizada en bases de datos.</li>
                       <li>
                         Recordatorio de pago sobre la tasa de anualidad cada
                         año.
                       </li>
                     </ul>
                   </div>
-                  <Link to={"/premium"}>
+                  <Link to="/register" params={{ premium: true }}>
                     <button
                       className="btn btn-success text-center"
                       style={{ fontSize: "25px" }}>
@@ -210,7 +221,7 @@ function Pasos(props) {
                     necesaria para que tu idea se de a conocer.
                   </p>
 
-                  <Link to={"/paso1"}>
+                  <Link to={"/registerfree"}>
                     <button
                       className="btn btn-success"
                       style={{ fontSize: "25px" }}
@@ -239,86 +250,16 @@ function Pasos(props) {
           <Home />
         </Route>
 
-        <Route exact path="/premium">
-          <div className="container">
-            <div className="row">
-              <div className="col-7">
-                <form>
-                  <div className="form-group">
-                    <label for="exampleInputEmail1">Correo electrónico:</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder="Ingresa correo"
-                    />
-                    <small id="emailHelp" className="form-text text-muted">
-                      No compartiremos tu correo con nadie más.
-                    </small>
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleInputPassword1">Nombre:</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Ingrese nombre"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleInputPassword1">Apellidos:</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Ingrese apellidos"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="exampleInputPassword1">
-                      Número telefónico:
-                    </label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Ingresa número de teléfono"
-                    />
-                  </div>
-                  <div className="form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="exampleCheck1"
-                    />
-                    <label className="form-check-label" for="exampleCheck1">
-                      Autorizo recibir promociones.
-                    </label>
-                  </div>
-                  <br />
-                  <button type="submit" className="btn btn-success">
-                    Submit
-                  </button>
-                </form>
-              </div>
-              <div className="col">
-                <img
-                  src={pago2}
-                  className="img-responsive"
-                  alt=" "
-                  width="100%"></img>
-              </div>
-            </div>
-          </div>
-        </Route>
-
         <Route exact path="/login">
           <Login />
         </Route>
 
         <Route exact path="/register">
           <Register />
+        </Route>
+
+        <Route exact path="/registerfree">
+          <RegisterFree />
         </Route>
 
         <Route exact path="/solicitudes">
@@ -342,7 +283,12 @@ function Pasos(props) {
         <Route exact path="/paso3">
           <div className="container">
             <ProgressBar avance={3} />
-            <Paso3 />
+
+            {props.autenticado && props.user.premium ? (
+              <Paso3 correo={props.user.correo} />
+            ) : (
+              <Paso3 correo={null} />
+            )}
           </div>
         </Route>
 

@@ -1,9 +1,8 @@
 import React from "react";
 import pago2 from "../pago2.PNG";
-import fashion from "../fashion.png";
 import Header from "./Header.js";
 
-const Register = () => {
+const RegisterFree = () => {
   return (
     <div className="Register">
       <Header />
@@ -14,12 +13,11 @@ const Register = () => {
             <div className="col-6">
               <div>
                 <h2>
-                  <strongCriollo>Registro premium </strongCriollo>
-                  <img src={fashion} alt=" " width="50px"></img>
+                  <strongCriollo>Registro free </strongCriollo>
                 </h2>
               </div>
               <br />
-              <form action="/registerpremium" method="POST">
+              <form action="/registerfree" method="POST">
                 <div className="form-group">
                   <label for="exampleInputEmail1">Correo electrónico:</label>
                   <input
@@ -90,4 +88,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterFree;

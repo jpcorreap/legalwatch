@@ -21,7 +21,7 @@ function App() {
     <div classNameName="App">
       {user ? (
         <div>
-          <Navbar autenticado={true} username={user.username} />
+          <Navbar autenticado={true} user={user} />
           <br />
           <br />
           <br />
@@ -38,7 +38,7 @@ function App() {
       )}
 
       {user ? (
-        <Pasos autenticado={true} username={user.username} />
+        <Pasos autenticado={true} user={user} />
       ) : (
         <Pasos autenticado={false} />
       )}

@@ -2,7 +2,7 @@ const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
 require("dotenv").config();
 
-const url =process.env.MONGOURL;
+const url = "mongodb+srv://vaca:vaca123@cluster0-3lhwp.mongodb.net/test?retryWrites=true&w=majority";
 
 function MongoUtils() {
   const mu = {};
@@ -21,7 +21,7 @@ function MongoUtils() {
   mu.users = {};
 
   //creates a new user of the application
-  mu.users.create = (username, password) =>
+  mu.users.create = (username, password, premium) =>
     mu.connect().then((client) => {
       console.log(
         "Se conectó a la base de datos y va a guardar ",
@@ -29,31 +29,20 @@ function MongoUtils() {
         ":",
         password
       );
-      const usuarios = client.db("patentCol").collection("usuarios");
+      const usuarios = client.db("legalWatch").collection("usuarios");
 
       return usuarios
-        .insertOne({ username: username, password: password })
+        .insertOne({ correo: username, password: password, premium: premium })
         .finally(() => client.close());
     });
 
   // Get a specific user by username
   mu.users.findByUsername = (user, cb) =>
     mu.connect().then((client) => {
-      const usuarios = client.db("patentCol").collection("usuarios");
+      const usuarios = client.db("legalWatch").collection("usuarios");
 
       return usuarios
-        .findOne({ username: user })
-        .finally(() => client.close())
-        .then((user) => {
-          cb(null, user);
-        });
-    });
-
-  mu.users.deleteUser = (userID) =>
-    mu.connect().then((client) => {
-      const usuarios = client.db("patentCol").collection("usuarios");
-      return usuarios
-        .remove({ _id: new ObjectID(userID) })
+        .findOne({ correo: user })
         .finally(() => client.close())
         .then((user) => {
           cb(null, user);
@@ -63,7 +52,7 @@ function MongoUtils() {
   // Get a specific user by id
   mu.users.findOneById = (id, cb) =>
     mu.connect().then((client) => {
-      const usuarios = client.db("patentCol").collection("usuarios");
+      const usuarios = client.db("legalWatch").collection("usuarios");
 
       // when searching by id we need to create an ObjectID
       return usuarios
@@ -74,36 +63,10 @@ function MongoUtils() {
         });
     });
 
-  mu.getSolicitudes = () =>
-    mu.connect().then((client) =>
-      client
-        .db("patentCol")
-        .collection("solicitudes")
-        .find({})
-        .toArray()
-        .finally(() => client.close())
-    );
-
-  mu.createSolicitud = (username, body) =>
-    mu.connect().then((client) => {
-      console.log("OJOOOO! LLegó a Crear Solicitud con el body ", body);
-      let nuevoTitulo = body.registro;
-      let nuevaDescripcion = body.titulo;
-      client
-        .db("patentCol")
-        .collection("solicitudes")
-        .insertOne({
-          inventor: username,
-          nombre: nuevoTitulo,
-          descripcion: nuevaDescripcion,
-        })
-        .finally(() => client.close());
-    });
-
   mu.listenForChanges = (notifyAll) => {
     console.log("Listening for changes");
     return mu.connect().then((client) => {
-      const cursor = client.db("patentCol").collection("solicitudes").watch();
+      const cursor = client.db("legalWatch").collection("solicitudes").watch();
 
       cursor.on("change", (data) => {
         console.log("Mongo change", data);
@@ -113,60 +76,6 @@ function MongoUtils() {
       });
     });
   };
-
-  mu.patents = {};
-
-  mu.patents.getPatentScope = () =>
-    mu.connect().then((client) =>
-      client
-        .db("patentCol")
-        .collection("patentscope")
-        .find({})
-        .limit(25)
-        .skip(Math.floor(Math.random() * 1500))
-        .sort({ _id: -1 })
-        .toArray()
-        .finally(() => client.close())
-    );
-
-  mu.patents.getGoogleUtilityPatents = () =>
-    mu.connect().then((client) =>
-      client
-        .db("patentCol")
-        .collection("googleUtilityPatents")
-        .find({})
-        .limit(25)
-        .skip(Math.floor(Math.random() * 1500))
-        .sort({ _id: -1 })
-        .toArray()
-        .finally(() => client.close())
-    );
-
-  mu.patents.getGoogleIssuedPatents = () =>
-    mu.connect().then((client) =>
-      client
-        .db("patentCol")
-        .collection("googleReissuePatents")
-        .find({})
-        .limit(20)
-        .skip(Math.floor(Math.random() * 1500))
-        .sort({ _id: -1 })
-        .toArray()
-        .finally(() => client.close())
-    );
-
-  mu.patents.getNasaPatents = () =>
-    mu.connect().then((client) =>
-      client
-        .db("patentCol")
-        .collection("nasaPatents")
-        .find({})
-        .limit(20)
-        .skip(Math.floor(Math.random() * 1500))
-        .sort({ _id: -1 })
-        .toArray()
-        .finally(() => client.close())
-    );
 
   return mu;
 }

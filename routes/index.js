@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db/MongoUtils.js");
+const blockspring = require("blockspring");
+require("dotenv").config();
 
 router.get("/", function (req, res) {
   res.render("home", { user: req.user });
@@ -41,6 +43,20 @@ router.get("/getNasaPatents", function (req, res) {
   db.patents.getNasaPatents().then((col) => {
     res.json(col);
   });
+});
+
+router.post("/postRespuesta", (req, res) => {
+  console.log("LLEGÓ AL POST RESPUESTA CON EL BODDY ", req.body.texto);
+
+  blockspring.runParsed(
+    "spanish-keyword-extractor-monkeylearn",
+    { text: req.body.texto },
+    { api_key: "br_128366_62a16c09207913a40092bb9b843f3ac7f2677611" },
+    function (resAPI) {
+      console.log("VA A ENVIAR LA RESPUESTA ", resAPI);
+      res.json(resAPI.params.keywords);
+    }
+  );
 });
 
 module.exports = router;

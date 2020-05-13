@@ -10,16 +10,29 @@ const bu = require("./db/BcryptUtils.js");
 // (`username` and `password`) submitted by the user.  The function must verify
 // that the password is correct and then invoke `cb` with a user object, which
 // will be set at `req.user` in route handlers after authentication.
-passport.use(new Strategy(
-  function(username, password, cb) {
-    console.log("OJOOO! Entró a localStrategy a validar: ", username, ":", password);
-    db.users.findByUsername(username, function(err, user) {
-      if (err) { return cb(err); }
-      if (!user) { return cb(null, false); }
-      if (!bu.Accounts.validPassword(user, password)) { return cb(null, false); }
+passport.use(
+  new Strategy(function (username, password, cb) {
+    console.log(
+      "OJOOO! Entró a localStrategy a validar: ",
+      username,
+      ":",
+      password
+    );
+    db.users.findByUsername(username, function (err, user) {
+      console.log("OJOOOO! Se trajo el usuario ", user);
+      if (err) {
+        return cb(err);
+      }
+      if (!user) {
+        return cb(null, false);
+      }
+      if (user.password != password) {
+        return cb(null, false);
+      }
       return cb(null, user);
     });
-  }));
+  })
+);
 
 // Configure Passport authenticated session persistence.
 //
@@ -28,14 +41,16 @@ passport.use(new Strategy(
 // typical implementation of this is as simple as supplying the user ID when
 // serializing, and querying the user record by ID from the database when
 // deserializing.
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   cb(null, user._id);
 });
 
-passport.deserializeUser(function(id, cb) {
-  console.log( "Va a deserializar con el ID ", id );
+passport.deserializeUser(function (id, cb) {
+  console.log("Va a deserializar con el ID ", id);
   db.users.findOneById(id, function (err, user) {
-    if (err) { return cb(err); }
+    if (err) {
+      return cb(err);
+    }
     cb(null, user);
   });
 });
@@ -45,11 +60,13 @@ const configurePassport = (app) => {
   // logging, parsing, and session handling.
   app.use(require("cookie-parser")());
   app.use(require("body-parser").urlencoded({ extended: true }));
-  app.use(require("express-session")({
-    secret: "es un secreto",
-    resave: true,
-    saveUninitialized: true
-  }));
+  app.use(
+    require("express-session")({
+      secret: "es un secreto",
+      resave: true,
+      saveUninitialized: true,
+    })
+  );
 
   // Initialize Passport and restore authentication state, if any, from the
   // session.

@@ -10,7 +10,7 @@ const configureBcrypt = (app) => {
   app.use(
     session({
       key: "user_sid",
-      secret: process.env.BCRYPT,
+      secret: "llave de encriptacion mela",
       resave: false,
       saveUninitialized: false,
       cookie: {

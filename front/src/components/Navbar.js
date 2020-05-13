@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../Logo.png";
+import fashion from "../fashion.png";
 
 function Navbar(props) {
   return (
@@ -34,7 +35,7 @@ function Navbar(props) {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={"/register"} className="nav-link linkNavbar">
+                  <Link to={"/elijaplan"} className="nav-link linkNavbar">
                     Registrarse
                   </Link>
                 </li>
@@ -53,20 +54,29 @@ function Navbar(props) {
                   role="button"
                   data-toggle="dropdown"
                   aria-haspopup="true"
-                  aria-expanded="false">
-                  <strong>{props.username}</strong>
+                  aria-expanded="false"
+                  style={{ color: "white" }}>
+                  <strong>{props.user.correo}</strong>
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="/logout">
+                  <a
+                    className="dropdown-item"
+                    onClick={() => {
+                      fetch("/logoutback").then(
+                        () => (window.location.pathname = "/")
+                      );
+                    }}>
                     Cerrar sesión
                   </a>
                 </div>
               </li>
-              <li className="nav-item">
-                <Link to={"/solicitudes"} className="nav-link">
-                  <strong>Solicitudes</strong>
-                </Link>
-              </li>
+              {props.user.premium ? (
+                <li className="nav-item dropdown">
+                  <img src={fashion} alt=" " width="30px"></img>
+                </li>
+              ) : (
+                <span></span>
+              )}
             </ul>
           </div>
         )}
