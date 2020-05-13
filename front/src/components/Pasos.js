@@ -213,7 +213,10 @@ function Pasos(props) {
                   <Link to={"/paso1"}>
                     <button
                       className="btn btn-success"
-                      style={{ fontSize: "25px" }}>
+                      style={{ fontSize: "25px" }}
+                      onClick={() => {
+                        window.scroll(0, 0);
+                      }}>
                       Quiero Free
                     </button>
                   </Link>
