@@ -19,12 +19,22 @@ function App() {
   return (
     <div classNameName="App">
       {user ? (
-        <Navbar autenticado={true} username={user.username} />
+        <div>
+          <Navbar autenticado={true} username={user.username} />
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
       ) : (
-        <Navbar autenticado={false} />
+        <div>
+          <Navbar autenticado={false} />
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
       )}
-      <br />
-      <br />
 
       {user ? (
         <Pasos autenticado={true} username={user.username} />

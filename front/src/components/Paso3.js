@@ -105,7 +105,7 @@ function Paso3() {
             <img
               style={{ width: "100%" }}
               alt="PatentsView Logo"
-              id="imagenAHH"
+              id="patentsviewLogo"
               src="https://www.patentsview.org/web/img/f34f24560eeb9097579c2be6fa29f5a7.logo_2x.png"></img>
           </div>
           <div className="col-1"></div>
@@ -196,27 +196,5 @@ function Paso3() {
     </div>
   );
 }
-
-/*
-<div>
-        <StyledInput {...inputProps} placeholder="Type in here" />
-        <span>Value: {inputProps.value} </span>
-      </div>
-      <div>
-        <div>Choices: {checkbox.state.join(",")}</div>
-        <label>
-          <Checkbox {...checkbox} value="apple" />
-          Apple
-        </label>
-        <label>
-          <Checkbox {...checkbox} value="orange" />
-          Orange
-        </label>
-        <label>
-          <Checkbox {...checkbox} value="watermelon" />
-          Watermelon
-        </label>
-      </div>
-*/
 
 export default Paso3;
